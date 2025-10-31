@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: truthsleuth
+    env: python
+    plan: free
+    region: oregon
+
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+
+    startCommand: python app.py
+
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false  # You'll manually add your key in Render's dashboard
+
+    autoDeploy: true
